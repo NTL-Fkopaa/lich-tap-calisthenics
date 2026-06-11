@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lịch Tập Hè — Handstand & Calisthenics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --base: #0B0F1A;
+    --surface: #141924;
+    --surface2: #1C2333;
+    --surface3: #242E42;
+    --border: #2D3A52;
+    --accent: #38BDF8;
+    --accent-dim: rgba(56, 189, 248, 0.15);
+    --heavy: #F87171;
+    --heavy-dim: rgba(248, 113, 113, 0.15);
+    --medium: #FBBF24;
+    --medium-dim: rgba(251, 191, 36, 0.15);
+    --light: #34D399;
+    --light-dim: rgba(52, 211, 153, 0.15);
+    --rest: #6B7280;
+    --rest-dim: rgba(107, 114, 128, 0.12);
+    --text: #F1F5F9;
+    --text-muted: #94A3B8;
+    --text-dim: #64748B;
+    --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--base);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: linear-gradient(180deg, #0B0F1A 0%, rgba(11,15,26,0) 100%);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(11,15,26,0.9);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 60px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--accent), #6366F1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .logo-sub { font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.5px; }
+  .header-badge {
+    margin-left: auto;
+    background: var(--accent-dim);
+    border: 1px solid rgba(56,189,248,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    max-width: 1100px;
+    margin: 40px auto 32px;
+    padding: 0 20px;
+  }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .hero-title span { color: var(--accent); }
+  .hero-desc {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 560px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* ===== STATS ROW ===== */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .stat-num.accent { color: var(--accent); }
+  .stat-num.green { color: var(--light); }
+  .stat-num.amber { color: var(--medium); }
+  .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+  /* ===== WEEK GRID ===== */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 700px) { .week-grid { grid-template-columns: repeat(4, 1fr); } }
+  .day-thumb {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .day-thumb:hover { transform: translateY(-2px); }
+  .day-thumb.active { border-color: transparent; }
+  .day-thumb[data-intensity="heavy"] { --col: var(--heavy); --col-dim: var(--heavy-dim); }
+  .day-thumb[data-intensity="medium"] { --col: var(--medium); --col-dim: var(--medium-dim); }
+  .day-thumb[data-intensity="skill"] { --col: var(--light); --col-dim: var(--light-dim); }
+  .day-thumb[data-intensity="rest"] { --col: var(--rest); --col-dim: var(--rest-dim); }
+  .day-thumb.active { border-color: var(--col); background: var(--col-dim); box-shadow: 0 0 20px var(--col-dim); }
+  .day-thumb:hover { border-color: var(--col); }
+  .day-name { font-family: var(--font-display); font-size: 16px; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .day-title { font-size: 10px; color: var(--text-muted); line-height: 1.3; font-weight: 500; }
+  .day-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--col);
+    margin: 6px auto 0;
+    box-shadow: 0 0 6px var(--col);
+  }
+  .day-time {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--col);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .section-sub { color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
+
+  /* ===== DAY PANELS ===== */
+  .day-panels { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; }
+  .day-panel { display: none; }
+  .day-panel.active { display: block; animation: fadeUp 0.3s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  .day-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .day-num {
+    font-family: var(--font-display);
+    font-size: 80px;
+    line-height: 1;
+    color: var(--surface3);
+    flex-shrink: 0;
+    letter-spacing: -2px;
+  }
+  .day-info { flex: 1; min-width: 200px; }
+  .day-full-name {
+    font-family: var(--font-display);
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .intensity-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-right: 6px;
+    margin-bottom: 4px;
+  }
+  .pill-heavy { background: var(--heavy-dim); color: var(--heavy); border: 1px solid rgba(248,113,113,0.3); }
+  .pill-medium { background: var(--medium-dim); color: var(--medium); border: 1px solid rgba(251,191,36,0.3); }
+  .pill-skill { background: var(--light-dim); color: var(--light); border: 1px solid rgba(52,211,153,0.3); }
+  .pill-rest { background: var(--rest-dim); color: var(--rest); border: 1px solid rgba(107,114,128,0.3); }
+  .pill-accent { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(56,189,248,0.3); }
+
+  /* ===== BLOCKS ===== */
+  .block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    border-bottom: 1px solid transparent;
+  }
+  .block-header:hover { background: var(--surface2); }
+  .block.open .block-header { border-bottom-color: var(--border); background: var(--surface2); }
+  .block-letter {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 18px;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+  }
+  .letter-A { background: rgba(56,189,248,0.2); color: var(--accent); }
+  .letter-B { background: rgba(248,113,113,0.2); color: var(--heavy); }
+  .letter-C { background: rgba(251,191,36,0.2); color: var(--medium); }
+  .letter-D { background: rgba(52,211,153,0.2); color: var(--light); }
+  .block-title { font-weight: 600; font-size: 15px; flex: 1; }
+  .block-meta { font-size: 12px; color: var(--text-muted); }
+  .block-arrow {
+    font-size: 12px; color: var(--text-dim);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .block.open .block-arrow { transform: rotate(180deg); }
+  .block-body { padding: 20px; }
+
+  /* ===== EXERCISE CARDS ===== */
+  .exercise-list { display: flex; flex-direction: column; gap: 12px; }
+  .exercise-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .exercise-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--surface3);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+  }
+  .exercise-info { flex: 1; min-width: 0; }
+  .exercise-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .vi-name { color: var(--text-muted); font-weight: 400; font-size: 13px; }
+  .exercise-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
+  .exercise-stats {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .stat-pill {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--surface3);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .stat-pill.highlight { background: var(--accent-dim); color: var(--accent); border-color: rgba(56,189,248,0.25); }
+  .stat-pill.red { background: var(--heavy-dim); color: var(--heavy); border-color: rgba(248,113,113,0.25); }
+  .stat-pill.amber { background: var(--medium-dim); color: var(--medium); border-color: rgba(251,191,36,0.25); }
+  .stat-pill.green { background: var(--light-dim); color: var(--light); border-color: rgba(52,211,153,0.25); }
+  .tip-box {
+    margin-top: 10px;
+    background: rgba(56,189,248,0.07);
+    border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #7DD3FC;
+    line-height: 1.5;
+  }
+  .tip-box::before { content: '💡 '; }
+  .warn-box {
+    margin-top: 10px;
+    background: rgba(251,191,36,0.07);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #FCD34D;
+    line-height: 1.5;
+  }
+  .warn-box::before { content: '⚠️ '; }
+
+  /* ===== CHECKLIST ===== */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 13px;
+    font-weight: 500;
+    user-select: none;
+  }
+  .check-item:hover { border-color: var(--accent); }
+  .check-item.done { background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.3); color: var(--text-muted); text-decoration: line-through; }
+  .check-box {
+    width: 18px; height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    transition: all 0.15s;
+  }
+  .check-item.done .check-box {
+    background: var(--light);
+    border-color: var(--light);
+    color: #fff;
+  }
+
+  /* ===== REST DAY ===== */
+  .rest-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .rest-icon { font-size: 64px; margin-bottom: 20px; }
+  .rest-title { font-family: var(--font-display); font-size: 42px; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-muted); }
+  .rest-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; max-width: 320px; margin: 0 auto 24px; }
+  .rest-tips { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  .rest-tip { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted); }
+  .rest-tip::before { content: '›'; color: var(--light); font-weight: 700; font-size: 16px; }
+
+  /* ===== PROGRESSION SECTION ===== */
+  .main-content { max-width: 1100px; margin: 0 auto; padding: 0 20px 80px; }
+  .prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .prog-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .prog-phase {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .prog-weeks { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .prog-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
+  .prog-items { display: flex; flex-direction: column; gap: 6px; }
+  .prog-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); }
+  .prog-item::before { content: '→'; color: var(--accent); }
+
+  /* ===== GOALS SECTION ===== */
+  .goals-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .goal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .goal-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .goal-card:nth-child(1)::after { background: var(--accent); }
+  .goal-card:nth-child(2)::after { background: var(--medium); }
+  .goal-card:nth-child(3)::after { background: var(--light); }
+  .goal-month { font-family: var(--font-display); font-size: 32px; letter-spacing: 1px; margin-bottom: 14px; }
+  .goal-items { display: flex; flex-direction: column; gap: 8px; }
+  .goal-item { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; }
+  .goal-item .g-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ===== SAFETY ===== */
+  .safety-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .safety-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .safety-title { font-weight: 600; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .safety-items { display: flex; flex-direction: column; gap: 8px; }
+  .safety-item { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .stop-item { color: #FCA5A5; }
+  .stop-item::before { content: '❌'; margin-right: 4px; }
+
+  /* ===== RECOVERY TABLE ===== */
+  .recovery-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  .recovery-table th {
+    background: var(--surface2);
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .recovery-table th:first-child { border-radius: 10px 0 0 0; }
+  .recovery-table th:last-child { border-radius: 0 10px 0 0; }
+  .recovery-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .recovery-table tr:last-child td { border-bottom: none; }
+  .recovery-table tr:hover td { background: var(--surface2); }
+  .muscle-name { font-weight: 600; color: var(--text); }
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  /* ===== TABS ===== */
+  .nav-tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 32px; }
+  .nav-tab {
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+  }
+  .nav-tab:hover { color: var(--text); background: var(--surface); }
+  .nav-tab.active { background: var(--surface2); border-color: var(--border); color: var(--text); }
+
+  /* ===== DIVIDER ===== */
+  .divider { display: flex; align-items: center; gap: 12px; margin: 48px 0 32px; }
+  .divider-line { flex: 1; height: 1px; background: var(--border); }
+  .divider-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .hero-title { font-size: 42px; }
+    .day-num { font-size: 56px; }
+    .day-full-name { font-size: 30px; }
+    .rest-card { padding: 32px 20px; }
+    .block-body { padding: 14px; }
+    .exercise-card { flex-direction: column; gap: 8px; }
+    .exercise-num { font-size: 20px; }
+    .week-grid { grid-template-columns: repeat(4, 1fr); }
+    .header-inner { gap: 8px; }
+    .logo-text { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🤸</div>
+      <div>
+        <div class="logo-text">CALI SUMMER</div>
+        <div class="logo-sub">Handstand × Calisthenics</div>
+      </div>
+    </a>
+    <div class="header-badge">5 NGÀY / TUẦN</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">LỊCH TẬP HÈ 2026</div>
+  <h1 class="hero-title">HANDSTAND<br><span>+ CALISTHENICS</span></h1>
+  <p class="hero-desc">Xây dựng kỹ năng Handstand và sức mạnh toàn thân theo lộ trình 8 tuần. Nguyên tắc 48h phục hồi cho mỗi nhóm cơ, Handstand kỹ năng được ưu tiên.</p>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num accent">5</div>
+      <div class="stat-label">Buổi tập / tuần</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num green">8</div>
+      <div class="stat-label">Tuần lộ trình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num amber">48h</div>
+      <div class="stat-label">Phục hồi nhóm cơ</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--heavy)">45–50</div>
+      <div class="stat-label">Phút / buổi nặng</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#A78BFA">3</div>
+      <div class="stat-label">Buổi Handstand</div>
+    </div>
+  </div>
+
+  <!-- WEEK GRID -->
+  <div class="week-grid" id="weekGrid">
+    <div class="day-thumb active" data-intensity="heavy" data-day="t2" onclick="switchDay('t2')">
+      <div class="day-name">T2</div>
+      <div class="day-dot"></div>
+      <div class="day-title">HS Strength<br>+ Upper</div>
+      <div class="day-time">45–50 min</div>
+    </div>
+    <div class="day-thumb" data-intensity="heavy" data-day="t3" onclick="switchDay('t3')">
+      <div class="day-name">T3</div>
+      <div class="day-dot"></div>
+      <div class="day-title">Lower Body<br>+ Core</div>
+      <div class="day-time">40–45 min</div>
+    </div>
+    <div class="day-thumb" data-intensity="skill" data-day="t4" onclick="switchDay('t4')">
+      <div class="day-name">T4</div>
+      <div class="day-dot"></div>
+      <div class="day-title">Kỹ năng<br>Handstand</div>
+      <div class="day-time">20–25 min</div>
+    </div>
+    <div class="day-thumb" data-intensity="medium" data-day="t5" onclick="switchDay('t5')">
+      <div class="day-name">T5</div>
+      <div class="day-dot"></div>
+      <div class="day-title">Upper Push<br>+ HS nhẹ</div>
+      <div class="day-time">40 min</div>
+    </div>
+    <div class="day-thumb" data-intensity="heavy" data-day="t6" onclick="switchDay('t6')">
+      <div class="day-name">T6</div>
+      <div class="day-dot"></div>
+      <div class="day-title">Lower + Core<br>+ Cardio</div>
+      <div class="day-time">45–50 min</div>
+    </div>
+    <div class="day-thumb" data-intensity="rest" data-day="t7" onclick="switchDay('t7')">
+      <div class="day-name">T7</div>
+      <div class="day-dot"></div>
+      <div class="day-title">NGHỈ</div>
+      <div class="day-time">—</div>
+    </div>
+    <div class="day-thumb" data-intensity="rest" data-day="cn" onclick="switchDay('cn')">
+      <div class="day-name">CN</div>
+      <div class="day-dot"></div>
+      <div class="day-title">NGHỈ</div>
+      <div class="day-time">—</div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY PANELS -->
+<div class="day-panels">
+
+  <!-- ===== THỨ 2 ===== -->
+  <div class="day-panel active" id="panel-t2">
+    <div class="day-header">
+      <div class="day-num">02</div>
+      <div class="day-info">
+        <div class="day-full-name">THỨ HAI</div>
+        <div>
+          <span class="intensity-pill pill-heavy">🔴 Nặng</span>
+          <span class="intensity-pill pill-accent">🤸 Handstand Strength</span>
+          <span class="intensity-pill pill-accent" style="color:#A78BFA;background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.3)">Upper Body</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">Vai, ngực, lưng (nặng) — <span style="font-family:var(--font-mono);color:var(--medium)">45–50 phút</span></p>
+      </div>
+    </div>
+
+    <!-- Block A -->
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-A">A</div>
+        <div class="block-title">Khởi động & Làm nóng khớp</div>
+        <div class="block-meta">3 bài · 10 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Wrist Warm-up <span class="vi-name">— Xoay & Căng cổ tay</span></div>
+              <div class="exercise-desc">Quỳ xuống, chống tay, chuyển trọng tâm trước/sau, trái/phải, xoay tròn. Cổ tay phải được làm nóng kỹ trước handstand.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill highlight">10–15 lần/chiều</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Shoulder Dislocates <span class="vi-name">— Mở khớp vai</span></div>
+              <div class="exercise-desc">Dùng dây kháng lực hoặc gậy nhẹ, cầm rộng tay, đưa qua đầu ra sau lưng rồi về trước.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill highlight">15 lần</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">3</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Scapula Push-ups <span class="vi-name">— Hít đất bả vai</span></div>
+              <div class="exercise-desc">Vào tư thế Plank, chỉ di chuyển xương bả vai — ép vào rồi đẩy bồng lên. Toàn thân bất động.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill">2 hiệp</span>
+                <span class="stat-pill highlight">12 lần</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block B -->
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-B">B</div>
+        <div class="block-title">Handstand Strength — Chest-to-Wall Hold</div>
+        <div class="block-meta">15 phút · Nặng</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">★</div>
+            <div class="exercise-info">
+              <div class="exercise-name" style="color:var(--accent)">Chest-to-Wall Handstand Hold</div>
+              <div class="exercise-desc">Leo lên tường, ép người thẳng sát tường. <strong>Đẩy vai cao hết cỡ</strong> (không rụt vai). Siết chặt mông & bụng. Giữ body line thẳng.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">4 hiệp</span>
+                <span class="stat-pill red">20–30 giây</span>
+                <span class="stat-pill">Nghỉ: 90 giây</span>
+              </div>
+              <div class="tip-box">Nếu mỏi sớm, lùi tay ra xa tường 1–2 cm để giảm áp lực. Tập trung vào đẩy vai lên, không để vai rụt.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block C -->
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-C">C</div>
+        <div class="block-title">Upper Body Calisthenics</div>
+        <div class="block-meta">2 bài · 20 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Pull-ups <span class="vi-name">— Hít xà rộng tay</span></div>
+              <div class="exercise-desc">Tay rộng hơn vai, kéo ngực lên đến xà. Phát triển lưng xô, cánh tay kéo, bắp tay.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">8–12 reps</span>
+                <span class="stat-pill">Nghỉ: 90 giây</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Dips <span class="vi-name">— Xà kép</span></div>
+              <div class="exercise-desc">Dùng ghế hoặc xà kép, hạ người xuống cho cẳng tay tạo 90°, đẩy lên thẳng. Cắt nét ngực dưới & tay sau.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">10–15 reps</span>
+                <span class="stat-pill">Nghỉ: 90 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block D -->
+    <div class="block">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-D">D</div>
+        <div class="block-title">Bổ trợ Core nhẹ</div>
+        <div class="block-meta">1 bài · 5 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Hollow Body Hold</div>
+              <div class="exercise-desc">Nằm ngửa, ép lưng xuống đất, giơ chân và vai lên, giữ "người rỗng". Cực quan trọng để kiểm soát core trong handstand.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill green">2 sets</span>
+                <span class="stat-pill green">20 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="block">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter" style="background:rgba(167,139,250,0.15);color:#A78BFA;">✓</div>
+        <div class="block-title">Checklist hoàn thành T2</div>
+        <div class="block-meta">Tích vào khi xong</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="check-grid">
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Wrist & Shoulder Warm-up</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Scapula Push-ups 2×12</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Chest-to-Wall 4×20–30s</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Pull-ups 3×8–12</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Dips 3×10–15</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Hollow Body Hold 2×20s</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THỨ 3 ===== -->
+  <div class="day-panel" id="panel-t3">
+    <div class="day-header">
+      <div class="day-num">03</div>
+      <div class="day-info">
+        <div class="day-full-name">THỨ BA</div>
+        <div>
+          <span class="intensity-pill pill-heavy">🔴 Nặng</span>
+          <span class="intensity-pill" style="color:#C084FC;background:rgba(192,132,252,0.1);border-color:rgba(192,132,252,0.3)">🦵 Lower Body</span>
+          <span class="intensity-pill" style="color:#FB923C;background:rgba(251,146,60,0.1);border-color:rgba(251,146,60,0.3)">Core</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">Chân, bụng (nặng) — <span style="font-family:var(--font-mono);color:var(--medium)">40–45 phút</span></p>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-A">A</div>
+        <div class="block-title">Khởi động</div>
+        <div class="block-meta">5 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Chạy bộ nhẹ / Nhảy dây</div>
+              <div class="exercise-desc">Chạy nhẹ hoặc nhảy dây để tăng nhiệt độ cơ thể và lưu thông máu.</div>
+              <div class="exercise-stats"><span class="stat-pill highlight">1–2 phút</span></div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Xoay hông + Bodyweight Squat nhẹ</div>
+              <div class="exercise-desc">Xoay hông 2 chiều, sau đó squat bodyweight nhẹ để làm nóng khớp gối và mắt cá.</div>
+              <div class="exercise-stats"><span class="stat-pill highlight">10 lần</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-B">B</div>
+        <div class="block-title">Lower Body Strength</div>
+        <div class="block-meta">2 bài · 25 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Jump Squats <span class="vi-name">— Squat nhảy bật cao</span></div>
+              <div class="exercise-desc">Đứng thẳng, hạ xuống squat đúng form, nhảy bật cao hết cỡ, hạ nhẹ nhàng xuống bằng mũi chân. Đốt calo & cắt nét đùi.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">4 sets</span>
+                <span class="stat-pill red">12 reps</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Bulgarian Split Squats <span class="vi-name">— Squat chia chân</span></div>
+              <div class="exercise-desc">Một chân đặt sau lên ghế, chân trước hạ xuống tạo 90° rồi đẩy lên. Phát triển đều hai chân, tăng sự ổn định khớp háng.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">10 reps/chân</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-C">C</div>
+        <div class="block-title">Core Work</div>
+        <div class="block-meta">3 bài · 15 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Hanging Knee Raises <span class="vi-name">— Đu xà nhấc gối</span></div>
+              <div class="exercise-desc">Đu xà thẳng tay, nhấc gối lên ngực, hạ từ từ không văng người. Bụng dưới & hip flexors.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">12–15 reps</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">L-Sit Hold <span class="vi-name">— Giữ tư thế chữ L</span></div>
+              <div class="exercise-desc">Chống tay (trên ghế hoặc xà thấp), nhấc chân lên tạo hình chữ L. Beginner tập Tuck L-Sit trước (gối co lại). Lực nén core cực mạnh.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">15–30 giây</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+              <div class="tip-box">Nếu chưa giữ được L-Sit thẳng, tập Tuck L-Sit (gối co) trước. Giữ tối đa thời gian có thể, không cần đủ 30 giây ngay từ đầu.</div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">3</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Plank</div>
+              <div class="exercise-desc">Nằm sấp, chống khuỷu tay, giữ thẳng hàng từ đầu đến gót chân. Không để hông đổ xuống hoặc nhô lên.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">1 phút</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter" style="background:rgba(167,139,250,0.15);color:#A78BFA;">✓</div>
+        <div class="block-title">Checklist hoàn thành T3</div>
+        <div class="block-meta">Tích vào khi xong</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="check-grid">
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Khởi động 5 phút</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Jump Squats 4×12</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Bulgarian Split Squats 3×10</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Hanging Knee Raises 3×12–15</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>L-Sit Hold 3×15–30s</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Plank 3×1 phút</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THỨ 4 ===== -->
+  <div class="day-panel" id="panel-t4">
+    <div class="day-header">
+      <div class="day-num">04</div>
+      <div class="day-info">
+        <div class="day-full-name">THỨ TƯ</div>
+        <div>
+          <span class="intensity-pill pill-skill">🟢 Nhẹ</span>
+          <span class="intensity-pill pill-accent">🤸 Kỹ năng Handstand</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">Cảm giác, thăng bằng (nhẹ) — <span style="font-family:var(--font-mono);color:var(--light)">20–25 phút</span></p>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-A">A</div>
+        <div class="block-title">Khởi động cổ tay</div>
+        <div class="block-meta">5 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">★</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Wrist Warm-up kỹ lưỡng</div>
+              <div class="exercise-desc">Xoay từng chiều, căng từng hướng đầy đủ. Ngày T4 nhẹ nên phần này đặc biệt quan trọng — làm nóng kỹ để tránh đau cổ tay khi luyện kỹ năng.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill green">5 phút đầy đủ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-B">B</div>
+        <div class="block-title">Kỹ năng — Finger Brakes</div>
+        <div class="block-meta">10 phút · Trọng tâm ngày</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">★</div>
+            <div class="exercise-info">
+              <div class="exercise-name" style="color:var(--light)">Chest-to-Wall + Finger Brakes</div>
+              <div class="exercise-desc">
+                Vào tư thế Chest-to-Wall như T2.<br>
+                Sau đó dùng các ngón tay bấu chặt xuống sàn để tạo lực đẩy nhẹ, chân rời khỏi tường 2–3 cm.<br>
+                Thả lỏng để chân chạm lại vào tường.
+              </div>
+              <div class="exercise-stats">
+                <span class="stat-pill green">3 sets</span>
+                <span class="stat-pill green">20 giây</span>
+              </div>
+              <div class="tip-box">Mục tiêu: Làm quen với không gian đứng úp ngược, kiểm soát từng ngón tay. Không cần hoàn hảo — đây là ngày học cảm giác, không phải ngày đẩy thể lực.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-C">C</div>
+        <div class="block-title">Ngã an toàn — Cartwheel Bail</div>
+        <div class="block-meta">10 phút · Quan trọng!</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">★</div>
+            <div class="exercise-info">
+              <div class="exercise-name" style="color:var(--medium)">Cartwheel Bail — Thoát hiểm an toàn</div>
+              <div class="exercise-desc">
+                Vào tư thế Chest-to-Wall, sau đó:<br>
+                1. Xoay một tay 90° ra ngoài<br>
+                2. Hạ một chân xuống bên đó<br>
+                3. Lộn nhào an toàn ra phía đó (như lộn ngang)
+              </div>
+              <div class="exercise-stats">
+                <span class="stat-pill amber">5–10 lần</span>
+                <span class="stat-pill amber">Mỗi bên</span>
+              </div>
+              <div class="warn-box">Đây là kỹ năng QUAN TRỌNG NHẤT để tập handstand an toàn. Tập thành thục trước khi tập xa tường.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THỨ 5 ===== -->
+  <div class="day-panel" id="panel-t5">
+    <div class="day-header">
+      <div class="day-num">05</div>
+      <div class="day-info">
+        <div class="day-full-name">THỨ NĂM</div>
+        <div>
+          <span class="intensity-pill pill-medium">🟡 Vừa</span>
+          <span class="intensity-pill pill-accent">🤸 Handstand nhẹ</span>
+          <span class="intensity-pill" style="color:#C084FC;background:rgba(192,132,252,0.1);border-color:rgba(192,132,252,0.3)">Upper Push</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">Ngực, vai (vừa) — <span style="font-family:var(--font-mono);color:var(--medium)">40 phút</span></p>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-A">A</div>
+        <div class="block-title">Khởi động</div>
+        <div class="block-meta">5 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Wrist Warm-up nhẹ</div>
+              <div class="exercise-stats"><span class="stat-pill green">3 phút</span></div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Shoulder Dislocates</div>
+              <div class="exercise-stats"><span class="stat-pill green">2 phút</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-B">B</div>
+        <div class="block-title">Handstand Hold — Wall Plank</div>
+        <div class="block-meta">10 phút · Nhẹ hơn T2</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">★</div>
+            <div class="exercise-info">
+              <div class="exercise-name" style="color:var(--medium)">Wall Plank Hold</div>
+              <div class="exercise-desc">Chống tay vào tường ở độ cao bụng, bước chân lên tường tạo góc 45°. Giữ thẳng hàng, không để hông rụng. Ít áp lực hơn Chest-to-Wall nhưng vẫn xây dựng tư thế úp ngược.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill amber">3 sets</span>
+                <span class="stat-pill amber">20–30 giây</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+              <div class="tip-box">Mục tiêu: Tăng thời gian ở tư thế úp ngược mà không quá nặng. Đây là ngày vừa phải.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-C">C</div>
+        <div class="block-title">Upper Body Push</div>
+        <div class="block-meta">3 bài · 20 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Regular Push-ups <span class="vi-name">— Chống đẩy cơ bản</span></div>
+              <div class="exercise-desc">Tay rộng bằng vai, hạ ngực chạm sàn hoặc gần sàn, đẩy lên. Ngực đều, tay sau.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill amber">3 sets</span>
+                <span class="stat-pill amber">Max reps hoặc 15–20</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Pike Push-ups <span class="vi-name">— Chống đẩy chữ V</span></div>
+              <div class="exercise-desc">Chống tay lên ghế cao, chân dưới sàn, tạo hình V. Hạ đầu hướng về phía tay tạo tam giác, đẩy mạnh lên. Tập trung vào vai trung tâm — tiền đề để làm handstand push-up sau này.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill amber">3 sets</span>
+                <span class="stat-pill amber">6–10 reps</span>
+                <span class="stat-pill">Nghỉ: 90 giây</span>
+              </div>
+              <div class="tip-box">Đây là bài tiền đề quan trọng cho Handstand Push-up. Tập form đúng ngay từ đầu: khuỷu tay hướng vào trong, không ra ngoài.</div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">3</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Australian Pull-ups <span class="vi-name">— Hít xà nghiêng</span></div>
+              <div class="exercise-desc">Xà ở độ cao bụng, chân đặt thẳng dưới sàn, kéo ngực lên xà. Lưng giữa, cơ sau vai. Dễ điều chỉnh độ khó bằng góc nghiêng.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill amber">3 sets</span>
+                <span class="stat-pill amber">12 reps</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-D">D</div>
+        <div class="block-title">Core nhẹ</div>
+        <div class="block-meta">5 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Hollow Body Hold</div>
+              <div class="exercise-stats">
+                <span class="stat-pill green">2 sets</span>
+                <span class="stat-pill green">20 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter" style="background:rgba(167,139,250,0.15);color:#A78BFA;">✓</div>
+        <div class="block-title">Checklist hoàn thành T5</div>
+        <div class="block-meta">Tích vào khi xong</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="check-grid">
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Khởi động 5 phút</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Wall Plank Hold 3×20–30s</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Regular Push-ups 3×15–20</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Pike Push-ups 3×6–10</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Australian Pull-ups 3×12</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Hollow Body Hold 2×20s</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THỨ 6 ===== -->
+  <div class="day-panel" id="panel-t6">
+    <div class="day-header">
+      <div class="day-num">06</div>
+      <div class="day-info">
+        <div class="day-full-name">THỨ SÁU</div>
+        <div>
+          <span class="intensity-pill pill-heavy">🔴 Nặng</span>
+          <span class="intensity-pill" style="color:#C084FC;background:rgba(192,132,252,0.1);border-color:rgba(192,132,252,0.3)">🦵 Lower</span>
+          <span class="intensity-pill" style="color:#FB923C;background:rgba(251,146,60,0.1);border-color:rgba(251,146,60,0.3)">Core</span>
+          <span class="intensity-pill" style="color:#F472B6;background:rgba(244,114,182,0.1);border-color:rgba(244,114,182,0.3)">Cardio</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">Chân, bụng, tim (nặng) — <span style="font-family:var(--font-mono);color:var(--medium)">45–50 phút</span></p>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-A">A</div>
+        <div class="block-title">Khởi động</div>
+        <div class="block-meta">5 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Chạy bộ nhẹ 2 phút</div>
+              <div class="exercise-stats"><span class="stat-pill green">2 phút</span></div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Bodyweight Squats</div>
+              <div class="exercise-stats"><span class="stat-pill green">10 lần</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-B">B</div>
+        <div class="block-title">Lower Body <span style="color:var(--text-muted);font-weight:400;font-size:13px;">(Nhẹ hơn T3 để tránh quá tải)</span></div>
+        <div class="block-meta">2 bài · 20 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Jump Squats</div>
+              <div class="exercise-desc">Giảm từ 4×12 (T3) xuống còn 3×10 để tránh quá tải chân vào cuối tuần.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill amber">3 sets</span>
+                <span class="stat-pill amber">10 reps</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Bulgarian Split Squats</div>
+              <div class="exercise-desc">Giảm từ 3×10 (T3) xuống còn 3×8 mỗi chân.</div>
+              <div class="exercise-stats">
+                <span class="stat-pill amber">3 sets</span>
+                <span class="stat-pill amber">8 reps/chân</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-C">C</div>
+        <div class="block-title">Core</div>
+        <div class="block-meta">3 bài · 15 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-num">1</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Hanging Knee Raises</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">12 reps</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">2</div>
+            <div class="exercise-info">
+              <div class="exercise-name">L-Sit Hold (Tuck)</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">15–25 giây</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <div class="exercise-num">3</div>
+            <div class="exercise-info">
+              <div class="exercise-name">Plank</div>
+              <div class="exercise-stats">
+                <span class="stat-pill red">3 sets</span>
+                <span class="stat-pill red">45 giây</span>
+                <span class="stat-pill">Nghỉ: 60 giây</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter letter-D">D</div>
+        <div class="block-title">Cardio — Chọn 1</div>
+        <div class="block-meta">10 phút</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="exercise-list">
+          <div class="exercise-card">
+            <div class="exercise-info">
+              <div class="exercise-name" style="color:var(--light)">Lựa chọn cardio (chọn 1)</div>
+              <div class="exercise-stats" style="flex-direction:column;gap:6px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span class="stat-pill green">Option 1</span>
+                  <span style="font-size:13px;color:var(--text-muted);">Chạy bộ nhẹ — 10 phút liên tục</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span class="stat-pill green">Option 2</span>
+                  <span style="font-size:13px;color:var(--text-muted);">Nhảy dây — 3–4 rounds (30s nhảy + 30s nghỉ)</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span class="stat-pill green">Option 3</span>
+                  <span style="font-size:13px;color:var(--text-muted);">Đạp xe nhẹ — 10–15 phút</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-letter" style="background:rgba(167,139,250,0.15);color:#A78BFA;">✓</div>
+        <div class="block-title">Checklist hoàn thành T6</div>
+        <div class="block-meta">Tích vào khi xong</div>
+        <div class="block-arrow">▼</div>
+      </div>
+      <div class="block-body">
+        <div class="check-grid">
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Khởi động 5 phút</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Jump Squats 3×10</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Bulgarian Split Squats 3×8</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Hanging Knee Raises 3×12</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>L-Sit Hold 3×15–25s</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Plank 3×45s</div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div>Cardio 10 phút</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== T7 REST ===== -->
+  <div class="day-panel" id="panel-t7">
+    <div style="padding: 20px 0;">
+      <div class="rest-card">
+        <div class="rest-icon">🛌</div>
+        <div class="rest-title">NGHỈ NGƠI</div>
+        <p class="rest-desc">Đây là thời gian quan trọng nhất trong tuần. Cơ bắp phát triển khi nghỉ ngơi, không phải khi tập.</p>
+        <div class="rest-tips">
+          <div class="rest-tip">Không tập thể lực</div>
+          <div class="rest-tip">Ăn uống đầy đủ: 1.6–2g protein/kg</div>
+          <div class="rest-tip">Uống đủ 3L nước/ngày</div>
+          <div class="rest-tip">Ngủ 7–8 tiếng</div>
+          <div class="rest-tip">Có thể stretching nhẹ 5–10 phút</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CN REST ===== -->
+  <div class="day-panel" id="panel-cn">
+    <div style="padding: 20px 0;">
+      <div class="rest-card">
+        <div class="rest-icon">☀️</div>
+        <div class="rest-title">NGHỈ HOÀN TOÀN</div>
+        <p class="rest-desc">Chủ nhật là ngày phục hồi sâu. Đừng cảm thấy tội lỗi — tuần tới sẽ tập tốt hơn nhờ hôm nay nghỉ đủ.</p>
+        <div class="rest-tips">
+          <div class="rest-tip">Không tập gì cả</div>
+          <div class="rest-tip">Ăn uống đầy đủ chất</div>
+          <div class="rest-tip">Ngủ sâu, dài</div>
+          <div class="rest-tip">Chuẩn bị tinh thần cho T2</div>
+          <div class="rest-tip">Xem lại mục tiêu tuần tới</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOWER SECTIONS ===== -->
+<div class="main-content">
+
+  <!-- PROGRESSION -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-label">Lộ trình tiến triển</div><div class="divider-line"></div></div>
+  <h2 class="section-title">PROGRESSION 8 TUẦN</h2>
+  <p class="section-sub">Tăng dần cường độ theo từng giai đoạn — đừng bỏ qua bước nào</p>
+
+  <div class="prog-grid">
+    <div class="prog-card">
+      <div class="prog-phase">Giai đoạn 1</div>
+      <div class="prog-weeks">Tuần 1–2</div>
+      <div class="prog-desc">Làm quen (Deload) — Tập với khối lượng nhẹ, ưu tiên form chuẩn hơn cường độ.</div>
+      <div class="prog-items">
+        <div class="prog-item">Handstand Chest-to-Wall: 4 × 15 giây</div>
+        <div class="prog-item">Pull-ups: 3 × 5–8 reps</div>
+        <div class="prog-item">Dips: 3 × 8–10 reps</div>
+        <div class="prog-item">Jump Squats: 3 × 10 reps</div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-phase">Giai đoạn 2</div>
+      <div class="prog-weeks">Tuần 3–4</div>
+      <div class="prog-desc">Xây dựng nền tảng — Tăng reps & thời gian hold, form ngày càng chắc chắn.</div>
+      <div class="prog-items">
+        <div class="prog-item">Handstand Hold: 4 × 25 giây (+3–5s/tuần)</div>
+        <div class="prog-item">Pull-ups: 3 × 10 reps</div>
+        <div class="prog-item">Dips: 3 × 12 reps</div>
+        <div class="prog-item">Pike Push-ups: 3 × 8 reps</div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-phase">Giai đoạn 3</div>
+      <div class="prog-weeks">Tuần 5–6</div>
+      <div class="prog-desc">Nâng cấp — Bắt đầu kỹ năng handstand nâng cao, tăng độ khó push.</div>
+      <div class="prog-items">
+        <div class="prog-item">Handstand: Chest-to-wall → Wall Plank</div>
+        <div class="prog-item">Pike Push-ups: Tăng reps hoặc giảm ghế</div>
+        <div class="prog-item">L-Sit: Tuck → Full L-Sit</div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-phase">Giai đoạn 4</div>
+      <div class="prog-weeks">Tuần 7–8</div>
+      <div class="prog-desc">Đỉnh cao — Giữ cường độ cao, handstand tự do có hỗ trợ.</div>
+      <div class="prog-items">
+        <div class="prog-item">Handstand Hold 50–60% (có bạn hỗ trợ)</div>
+        <div class="prog-item">Tempo chậm, pause để tăng khó</div>
+        <div class="prog-item">Hướng đến free handstand 1–2 giây</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOVERY TABLE -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-label">Phân tích phục hồi</div><div class="divider-line"></div></div>
+  <h2 class="section-title">KHỐI LƯỢNG & PHỤC HỒI</h2>
+  <p class="section-sub">Mỗi nhóm cơ cần ≥48h nghỉ giữa hai buổi nặng</p>
+
+  <div class="table-wrap" style="margin-bottom: 40px;">
+    <table class="recovery-table">
+      <thead>
+        <tr>
+          <th>Nhóm cơ</th>
+          <th>T2</th>
+          <th>T3</th>
+          <th>T4</th>
+          <th>T5</th>
+          <th>T6</th>
+          <th>Phục hồi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="muscle-name">Vai</td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 NẶNG</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td><span class="intensity-pill pill-skill" style="font-size:11px;padding:2px 8px;">nhẹ</span></td>
+          <td><span class="intensity-pill pill-medium" style="font-size:11px;padding:2px 8px;">🟡 vừa</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td style="color:var(--light);font-size:12px;">✅ 2 ngày cuối tuần</td>
+        </tr>
+        <tr>
+          <td class="muscle-name">Ngực</td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 nặng</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td style="color:var(--light);">✅</td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 nặng</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td style="color:var(--light);font-size:12px;">✅ 2 ngày — Đủ</td>
+        </tr>
+        <tr>
+          <td class="muscle-name">Lưng</td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 nặng</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td style="color:var(--light);">✅</td>
+          <td><span class="intensity-pill pill-medium" style="font-size:11px;padding:2px 8px;">🟡 vừa</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td style="color:var(--light);font-size:12px;">✅ Đủ thời gian</td>
+        </tr>
+        <tr>
+          <td class="muscle-name">Chân</td>
+          <td style="color:var(--light);">✅</td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 NẶNG</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td style="color:var(--light);">✅</td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 nặng</span></td>
+          <td style="color:var(--medium);font-size:12px;">⚠️ 1 ngày — Có cardio T6</td>
+        </tr>
+        <tr>
+          <td class="muscle-name">Core</td>
+          <td><span class="intensity-pill pill-medium" style="font-size:11px;padding:2px 8px;">🟡</span></td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 NẶNG</span></td>
+          <td style="color:var(--light);">✅</td>
+          <td><span class="intensity-pill pill-medium" style="font-size:11px;padding:2px 8px;">🟡</span></td>
+          <td><span class="intensity-pill pill-heavy" style="font-size:11px;padding:2px 8px;">🔴 nặng</span></td>
+          <td style="color:var(--light);font-size:12px;">✅ Nghỉ T7+CN</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GOALS -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-label">Mục tiêu hè</div><div class="divider-line"></div></div>
+  <h2 class="section-title">MỤC TIÊU THEO THÁNG</h2>
+  <p class="section-sub">Tiêu chuẩn cụ thể để đánh giá tiến độ mỗi tháng</p>
+
+  <div class="goals-row">
+    <div class="goal-card">
+      <div class="goal-month">HẾT THÁNG 6</div>
+      <div class="goal-items">
+        <div class="goal-item"><div class="g-dot" style="background:var(--accent)"></div>Handstand Chest-to-Wall: 4 × 30 giây solid</div>
+        <div class="goal-item"><div class="g-dot" style="background:var(--accent)"></div>Pull-ups: 3 × 10 reps đúng form</div>
+        <div class="goal-item"><div class="g-dot" style="background:var(--accent)"></div>Dips: 3 × 12 reps</div>
+      </div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-month">HẾT THÁNG 7</div>
+      <div class="goal-items">
+        <div class="goal-item"><div class="g-dot" style="background:var(--medium)"></div>Handstand Wall Plank: 3 × 30 giây</div>
+        <div class="goal-item"><div class="g-dot" style="background:var(--medium)"></div>Pike Push-ups: 3 × 10 reps</div>
+        <div class="goal-item"><div class="g-dot" style="background:var(--medium)"></div>Full L-Sit: 3 × 20 giây</div>
+      </div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-month">HẾT THÁNG 8</div>
+      <div class="goal-items">
+        <div class="goal-item"><div class="g-dot" style="background:var(--light)"></div>Handstand 50% tường: 3 × 20 giây có hỗ trợ</div>
+        <div class="goal-item"><div class="g-dot" style="background:var(--light)"></div>Làm quen free handstand 1–2 giây</div>
+        <div class="goal-item"><div class="g-dot" style="background:var(--light)"></div>Tất cả bài tập đạt reps mục tiêu</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAFETY -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-label">An toàn & chú ý</div><div class="divider-line"></div></div>
+  <h2 class="section-title">AN TOÀN & MẸO QUAN TRỌNG</h2>
+  <p class="section-sub">Đọc kỹ và ghi nhớ trước khi bắt đầu chương trình</p>
+
+  <div class="safety-grid">
+    <div class="safety-card">
+      <div class="safety-title">🤸 Handstand Safety</div>
+      <div class="safety-items">
+        <div class="safety-item">Luôn tập trên thảm/cushion dày để tránh chấn thương đầu</div>
+        <div class="safety-item">Tập gần tường lúc đầu, nên có người bạn bên cạnh</div>
+        <div class="safety-item">Tập ngã an toàn (Cartwheel Bail) hàng ngày vào T4</div>
+        <div class="safety-item">Không tập handstand nặng 2 ngày liên tiếp</div>
+      </div>
+    </div>
+    <div class="safety-card">
+      <div class="safety-title">🍽️ Dinh dưỡng & Phục hồi</div>
+      <div class="safety-items">
+        <div class="safety-item">Ăn 1.6–2g protein/kg cơ thể mỗi ngày</div>
+        <div class="safety-item">Uống đủ 3L+ nước mỗi ngày</div>
+        <div class="safety-item">Ngủ 7–8 tiếng/đêm — phục hồi quan trọng nhất</div>
+        <div class="safety-item">Nếu mỏi quá, hạ khối lượng 20–30% và tập form</div>
+      </div>
+    </div>
+    <div class="safety-card">
+      <div class="safety-title">🚨 Dấu hiệu cần dừng ngay</div>
+      <div class="safety-items">
+        <div class="safety-item stop-item">Đau cấp tính tại khớp (không phải cơ bắp)</div>
+        <div class="safety-item stop-item">Sưng, tê, nóng tại cổ tay hoặc vai</div>
+        <div class="safety-item stop-item">Không thể hoàn thành set nhẹ nhàng</div>
+        <div class="safety-item" style="color:var(--medium);">→ Nếu có dấu hiệu, dừng & xin tư vấn huấn luyện viên!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:60px 0 40px;color:var(--text-dim);font-size:13px;">
+    <div style="font-family:var(--font-display);font-size:28px;color:var(--surface3);letter-spacing:2px;margin-bottom:12px;">CALI SUMMER 2026</div>
+    <div>Kiên trì từng ngày • Chú ý form • Nghỉ đủ giấc</div>
+    <div style="margin-top:8px;color:var(--text-dim);">💪 Chúc bro tập tốt và đạt được mục tiêu hè này,bro sẽ làm được!</div>
+  </div>
+</div>
+
+<script>
+  function switchDay(day) {
+    // Update thumbs
+    document.querySelectorAll('.day-thumb').forEach(t => t.classList.remove('active'));
+    document.querySelector('[data-day="' + day + '"]').classList.add('active');
+    // Update panels
+    document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + day).classList.add('active');
+  }
+
+  function toggleBlock(header) {
+    const block = header.parentElement;
+    const body = block.querySelector('.block-body');
+    if (block.classList.contains('open')) {
+      block.classList.remove('open');
+      body.style.display = 'none';
+    } else {
+      block.classList.add('open');
+      body.style.display = '';
+    }
+  }
+
+  function toggleCheck(el) {
+    el.classList.toggle('done');
+    // save state for this panel
+    try {
+      const panel = el.closest('.day-panel');
+      if (panel && panel.id) {
+        const items = Array.from(panel.querySelectorAll('.check-item'));
+        const state = items.map(i => i.classList.contains('done'));
+        localStorage.setItem('checklist:' + panel.id, JSON.stringify(state));
+      }
+    } catch (e) {
+      console.warn('localStorage save failed', e);
+    }
+  }
+
+  // Initialize: close non-open blocks' bodies
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.block').forEach(block => {
+      const body = block.querySelector('.block-body');
+      if (body) {
+        if (!block.classList.contains('open')) {
+          body.style.display = 'none';
+        }
+      }
+    });
+    // restore checklist state from localStorage
+    try {
+      document.querySelectorAll('.day-panel').forEach(panel => {
+        const key = 'checklist:' + panel.id;
+        const raw = localStorage.getItem(key);
+        if (!raw) return;
+        const arr = JSON.parse(raw);
+        const items = panel.querySelectorAll('.check-item');
+        items.forEach((it, idx) => {
+          if (arr[idx]) it.classList.add('done'); else it.classList.remove('done');
+        });
+      });
+    } catch (e) {
+      console.warn('localStorage load failed', e);
+    }
+  });
+
+  // Also run immediately for blocks that aren't in open state
+  (function init() {
+    document.querySelectorAll('.block').forEach(block => {
+      const body = block.querySelector('.block-body');
+      if (body && !block.classList.contains('open')) {
+        body.style.display = 'none';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
